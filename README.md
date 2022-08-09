@@ -1,7 +1,7 @@
 # talemaker-data
 This repository holds the data from TaleMaker's database of stories
 
-* talemaker_clients *
+*talemaker_clients*
 ```
 client_id VARCHAR (255) PRIMARY KEY,
 name VARCHAR (30) NOT NULL,
