@@ -1,7 +1,7 @@
 # talemaker-data
 This repository holds the data from TaleMaker's database of stories
 
-** talemaker_clients **
+* talemaker_clients *
 ```
 client_id VARCHAR (255) PRIMARY KEY,
 name VARCHAR (30) NOT NULL,
@@ -10,7 +10,7 @@ avatar VARCHAR (50),
 color VARCHAR (7)
 ```
 
-** talemaker_games **
+* talemaker_games *
 ```
 game_id VARCHAR (255) PRIMARY KEY,
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -75,7 +75,7 @@ time_end BIGINT NOT NULL,
 time BIGINT NOT NULL
 ```
 
-** talemaker_players **
+* talemaker_players *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -84,7 +84,7 @@ diamonds INT NOT NULL,
 UNIQUE (game_id, client_id)
 ```
 
-** talemaker_states **
+* talemaker_states *
 ```
 state_id BIGSERIAL PRIMARY KEY,
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
@@ -93,7 +93,7 @@ turn INT NOT NULL,
 time BIGINT NOT NULL
 ```
 
-** talemaker_rewards **
+* talemaker_rewards *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -104,7 +104,7 @@ turn INT NOT NULL
 ```
 
 
-** talemaker_turn_times **
+* talemaker_turn_times *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -115,7 +115,7 @@ time_drawn BIGINT NOT NULL,
 time_plotpoint BIGINT NOT NULL
 ```
 
-** talemaker_tokens **
+* talemaker_tokens *
 ```
 token_id BIGSERIAL PRIMARY KEY,
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
@@ -136,7 +136,7 @@ drawn_turn INT,
 discard_turn INT
 ```
 
-** talemaker_hands **
+* talemaker_hands *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -144,7 +144,7 @@ token_id BIGINT REFERENCES talemaker_tokens(token_id),
 turn INT NOT NULL
 ```
 
-** talemaker_stories **
+* talemaker_stories *
 ```
 story_id BIGSERIAL PRIMARY KEY,
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
@@ -158,7 +158,7 @@ num_tokens_drawn INT NOT NULL,
 num_evaluations INT NOT NULL
 ```
 
-** talemaker_story_names **
+* talemaker_story_names *
 ```
 story_id BIGINT REFERENCES talemaker_stories(story_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -168,7 +168,7 @@ name VARCHAR (100) NOT NULL,
 votes INT NOT NULL
 ```
 
-** talemaker_plotpoints **
+* talemaker_plotpoints *
 ```
 plotpoint_id BIGSERIAL PRIMARY KEY,
 story_id BIGINT REFERENCES talemaker_stories(story_id),
@@ -190,7 +190,7 @@ avatar VARCHAR (50),
 color VARCHAR (7)
 ```
 
-** talemaker_slots **
+* talemaker_slots *
 ```
 slot_id BIGSERIAL PRIMARY KEY,
 plotpoint_id BIGINT REFERENCES talemaker_plotpoints(plotpoint_id),
@@ -202,14 +202,14 @@ view BOOLEAN,
 index INT
 ```
 
-** talemaker_plotpoints_voters **
+* talemaker_plotpoints_voters *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 plotpoint_id BIGINT REFERENCES talemaker_plotpoints(plotpoint_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id)
 ```
 
-** talemaker_piles **
+* talemaker_piles *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -217,7 +217,7 @@ category VARCHAR (20),
 turn INT NOT NULL
 ```
 
-** talemaker_voter_trans **
+* talemaker_voter_trans *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -225,7 +225,7 @@ vote INT NOT NULL,
 turn INT NOT NULL
 ```
 
-** talemaker_voter_change **
+* talemaker_voter_change *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -233,7 +233,7 @@ vote INT NOT NULL,
 turn INT NOT NULL
 ```
 
-** talemaker_voter_finish **
+* talemaker_voter_finish *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -241,7 +241,7 @@ vote INT NOT NULL,
 turn INT NOT NULL
 ```
 
-** talemaker_evaluation **
+* talemaker_evaluation *
 ```
 story_id BIGINT REFERENCES talemaker_stories(story_id),
 client_id VARCHAR (255) REFERENCES talemaker_clients(client_id),
@@ -249,7 +249,7 @@ question VARCHAR (10) NOT NULL,
 answer INT NOT NULL
 ```
 
-** talemaker_sentiments **
+* talemaker_sentiments *
 ```
 game_id VARCHAR (255) REFERENCES talemaker_games(game_id),
 senti VARCHAR(3) NOT NULL,
